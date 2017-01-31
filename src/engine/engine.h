@@ -12,11 +12,10 @@ namespace saper {
 class engine {
 public:
     using size_t = std::uint8_t;
-    using position = std::pair<size_t, size_t>;
     using map_t = std::vector<std::vector<map_element>>;
 
     void new_game(size_t width=10, size_t length=10);
-    void action(position p);
+    void action(size_t x, size_t y);
     map_t& get_current_map();
 
 private:

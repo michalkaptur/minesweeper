@@ -39,3 +39,16 @@ TEST_F(engine_test, hidden_map_on_new_game)
         }
     }
 }
+
+TEST_F(engine_test, action_reveals_element)
+{
+    e.new_game(width, length);
+    std::uint8_t x=1, y=2;
+    e.action(x,y);
+    auto map = e.get_current_map();
+    EXPECT_TRUE(map[x][y].is_revealed);
+}
+
+
+//TODO: action without game started, action on forbidden position
+

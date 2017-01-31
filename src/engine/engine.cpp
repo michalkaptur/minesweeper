@@ -12,9 +12,9 @@ void engine::reset_map(engine::size_t width, engine::size_t height)
     map = std::make_unique<engine::map_t>(width, std::vector<map_element>(height, map_element()));
 }
 
-void engine::action(engine::position p)
+void engine::action(size_t x, size_t y)
 {
-
+    (*map)[x][y].is_revealed = true;
 }
 
 engine::map_t &engine::get_current_map()

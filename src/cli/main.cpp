@@ -22,5 +22,6 @@ int main()
 {
     saper::engine eng;
     eng.new_game(5,5);
+    eng.action(1,2);
     draw_map(eng.get_current_map());
 }
