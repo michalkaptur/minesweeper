@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <tuple>
 #include <vector>
+#include <memory>
 
 #include "map_element.h"
 
@@ -16,13 +17,11 @@ public:
 
     void new_game(size_t width=10, size_t length=10);
     void action(position p);
-    map_t get_current_map();
+    map_t& get_current_map();
 
 private:
-    map_t blank_map(engine::size_t width, engine::size_t height);
-
-private:
-    map_t map;
+    void reset_map(engine::size_t width, engine::size_t height);
+    std::unique_ptr<map_t> map;
 };
 
 }
