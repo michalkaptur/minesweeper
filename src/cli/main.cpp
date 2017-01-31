@@ -8,7 +8,10 @@ void draw_map(const saper::engine::map_t& map)
     {
         for(auto el : row)
         {
-            std::cout<<"O ";
+            char symbol {'O'};
+            if (el.is_revealed)
+                symbol = '0';
+            std::cout<<symbol<<" ";
         }
         std::cout<<std::endl;
     }
