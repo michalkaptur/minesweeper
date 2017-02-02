@@ -19,6 +19,7 @@ public:
     map_t& get_current_map();
 
 private:
+    size_t width, height;
     void reset_map(engine::size_t width, engine::size_t height);
     std::unique_ptr<map_t> map;
 };

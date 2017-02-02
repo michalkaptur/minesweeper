@@ -49,6 +49,15 @@ TEST_F(engine_test, action_reveals_element)
     EXPECT_TRUE(map[x][y].is_revealed);
 }
 
+TEST_F(engine_test, action_throws_on_range_violation)
+{
+    e.new_game(width, length);
+    std::uint8_t max_x=width-1, max_y=length-1;
+    EXPECT_NO_THROW(e.action(max_x,max_y));
+    EXPECT_THROW(e.action(max_x+1,max_y), std::out_of_range);
+    EXPECT_THROW(e.action(max_x,max_y+1), std::out_of_range);
+    EXPECT_THROW(e.action(max_x+10,max_y+1), std::out_of_range);
+}
 
 //TODO: action without game started, action on forbidden position
 
