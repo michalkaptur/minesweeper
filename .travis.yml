@@ -9,6 +9,8 @@ addons:
   apt:
     packages:
       - cmake
+      - clang-3.8
+      - g++-6
 
 script:
   - "mkdir build && cd build"
