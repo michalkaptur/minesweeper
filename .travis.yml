@@ -1,15 +1,25 @@
 sudo: false
 dist: trusty
 
+addons:
+  apt:
+    sources:
+    # add PPAs with more up-to-date toolchains
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.6
+
+    packages:
+      - cmake
+      - gcc-5
+      - g++-5
+      - clang-3.6
+
 language: cpp
+
 compiler:
   - clang
   - g++
 
-addons:
-  apt:
-    packages:
-      - cmake
 
 script:
   - "mkdir build && cd build"
