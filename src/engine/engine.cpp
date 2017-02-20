@@ -12,7 +12,7 @@ void engine::new_game(engine::size_t width, engine::size_t height)
 
 void engine::reset_map(engine::size_t width, engine::size_t height)
 {
-    map = std::make_unique<engine::map_t>(width, std::vector<map_element>(height, map_element()));
+    map = std::unique_ptr<engine::map_t>(new engine::map_t(width, std::vector<map_element>(height, map_element()))); //use make_unique with c++14
 }
 
 void engine::action(size_t x, size_t y)
