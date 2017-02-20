@@ -5,6 +5,7 @@ addons:
   apt:
     packages:
       - cmake
+      - libboost1.54-dev
 
 language: cpp
 
