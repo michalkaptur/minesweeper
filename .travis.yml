@@ -4,15 +4,13 @@ dist: trusty
 addons:
   apt:
     packages:
-      - clang
-      - clang-format
       - cmake
       - libgtest-dev
 
 language: cpp
 
 compiler:
-  - clang
+#  - clang
   - g++
 
 #build gtest
@@ -28,4 +26,4 @@ script:
   - "mkdir build && cd build"
   - "cmake .."
   - "make"
-  - "cd .. && tools/is_formatted.sh"
+#  - "cd .. && tools/is_formatted.sh"
