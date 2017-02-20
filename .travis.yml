@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 dist: trusty
 
 addons:
@@ -13,6 +13,13 @@ compiler:
   - clang
   - g++
 
+#build gtest
+before_install:
+  - sudo chown -R /usr/src/gtest/
+  - cd /usr/src/gtest/
+  - mkdir build && cd build
+  - cmake ..
+  - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
 
 script:
   - "mkdir build && cd build"
