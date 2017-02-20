@@ -15,10 +15,9 @@ compiler:
 
 #build gtest
 before_install:
-  - sudo chown -R /usr/src/gtest/
   - cd /usr/src/gtest/
-  - mkdir build && cd build
-  - cmake ..
+  - sudo mkdir build && cd build
+  - sudo cmake ..
   - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
 
 script:
