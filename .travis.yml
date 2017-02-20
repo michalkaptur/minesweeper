@@ -4,6 +4,8 @@ dist: trusty
 addons:
   apt:
     packages:
+      - clang
+      - clang-format
       - cmake
       - libgtest-dev
 
@@ -20,6 +22,7 @@ before_install:
   - sudo cmake .. -DBUILD_SHARED_LIBS=ON
   - sudo make
   - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
+  - cd "${TRAVIS_BUILD_DIR}"
 
 script:
   - "mkdir build && cd build"
