@@ -1,5 +1,6 @@
 #include "engine.h"
 #include <exception>
+#include <memory>
 
 namespace saper {
 
@@ -10,9 +11,8 @@ void engine::new_game(engine::size_t width, engine::size_t height) {
 }
 
 void engine::reset_map(engine::size_t width, engine::size_t height) {
-	map = std::unique_ptr<engine::map_t>(new engine::map_t(
-	    width, std::vector<map_element>(
-	               height, map_element())));  // use make_unique with c++14
+    map = std::make_unique<engine::map_t>(engine::map_t(
+        width, std::vector<map_element>(height, map_element())));
 }
 
 void engine::action(size_t x, size_t y) {
