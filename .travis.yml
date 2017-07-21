@@ -18,7 +18,7 @@ matrix:
       addons:
         apt:
           packages:
-            - clang-3.8
+            - clang-4.0
             - libgtest-dev
           sources:
             - ubuntu-toolchain-r-test
