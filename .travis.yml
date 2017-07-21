@@ -26,6 +26,6 @@ matrix:
 script:
   - "mkdir build && cd build"
   - "cmake .."
-  - "make"
+  - "make VERBOSE=1"
   - ./ut
   - "cd .. && tools/is_formatted.sh"
