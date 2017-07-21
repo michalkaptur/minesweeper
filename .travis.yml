@@ -9,6 +9,7 @@ matrix:
           packages:
             - g++-6
             - gcc-6
+            - libgtest-dev
           sources:
             - ubuntu-toolchain-r-test
       env: "CXX=g++-6 CC=gcc-6"
@@ -17,6 +18,7 @@ matrix:
         apt:
           packages:
             - clang-3.8
+            - libgtest-dev
           sources:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.8
