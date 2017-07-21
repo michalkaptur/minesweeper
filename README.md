@@ -1,10 +1,10 @@
-[![Build Status](https://travis-ci.org/michalkaptur/saper.svg?branch=master)](https://travis-ci.org/michalkaptur/saper)
+[![Build Status](https://travis-ci.org/michalkaptur/minesweeper.svg?branch=master)](https://travis-ci.org/michalkaptur/minesweeper)
 
-# saper (minesweeper) engine
+# minesweeper engine
 
 ## dependencies
   - gtest
-  - compiler with c++11 support
+  - compiler with c++14 support
   - clang-format
 
 ## building
