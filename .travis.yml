@@ -38,4 +38,4 @@ script:
   - "cmake .."
   - "make"
   - ./ut
-#  - "cd .. && tools/is_formatted.sh"
+  - "cd .. && tools/is_formatted.sh"
