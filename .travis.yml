@@ -26,7 +26,7 @@ matrix:
 script:
   - "mkdir build && cd build"
   - "cmake .."
-  - /usr/bin/clang-4.0 --version
+  - #/usr/bin/clang-4.0 --version
   - "make VERBOSE=1"
   - ./ut
   - "cd .. && tools/is_formatted.sh"
