@@ -27,10 +27,8 @@ matrix:
 
 #build gtest
 before_install:
-  - sudo chown -R $USER:$USER /usr/src/gtest/
-  - cd /usr/src/gtest/
-  - mkdir build && pushd build
-  - cmake .. -DBUILD_SHARED_LIBS=ON
+  - mkdir /tmp/gtest_build && pushd /tmp/gtest_build
+  - cmake /usr/src/gtest/ -DBUILD_SHARED_LIBS=ON
   - make
   - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
   - popd
