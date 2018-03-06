@@ -19,6 +19,8 @@ matrix:
         apt:
           packages:
             - clang-4.0
+            - libc++-dev
+            - libc++abi-dev
             - libgtest-dev
           sources:
             - ubuntu-toolchain-r-test
@@ -36,7 +38,7 @@ before_install:
 script:
   - "mkdir build && cd build"
   - "cmake .."
-  - /usr/bin/clang-4.0 --version
+  - #/usr/bin/clang-4.0 --version
   - "make VERBOSE=1"
   - ./ut
   - "cd .. && tools/is_formatted.sh"
