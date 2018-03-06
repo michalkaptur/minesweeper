@@ -27,12 +27,13 @@ matrix:
 
 #build gtest
 before_install:
+  - sudo chown -R $USER:$USER /usr/src/gtest/
   - cd /usr/src/gtest/
-  - sudo mkdir build && cd build
-  - sudo cmake .. -DBUILD_SHARED_LIBS=ON
-  - sudo make
+  - mkdir build && pushd build
+  - cmake .. -DBUILD_SHARED_LIBS=ON
+  - make
   - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
-  - cd "${TRAVIS_BUILD_DIR}"
+  - popd
 
 script:
   - "mkdir build && cd build"
