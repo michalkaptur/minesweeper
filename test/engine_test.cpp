@@ -1,62 +1,63 @@
-#include <gtest/gtest.h>
-
+#include <catch.hpp>
 #include <engine/engine.h>
+#include <cstdint>
 
-
-class engine_test : public testing::Test
-{
-public:
-    saper::engine e;
+namespace {
     const std::uint8_t width = 2;
     const std::uint8_t length = 4;
-};
+}
 
-TEST_F(engine_test, default_new_game)
+TEST_CASE("default_new_game", "[engine_test]")
 {
+    saper::engine e;
     e.new_game();
 }
 
-TEST_F(engine_test, new_game_with_specified_size)
+TEST_CASE("new_game_with_specified_size", "[engine_test]")
 {
+    saper::engine e;
     e.new_game(width, length);
     auto map = e.get_current_map();
-    EXPECT_EQ(map.size(), width);
+    REQUIRE(map.size() == width);
     for(auto row : map)
     {
-        EXPECT_EQ(row.size(), length);
+        REQUIRE(row.size() == length);
     }
 }
 
-TEST_F(engine_test, hidden_map_on_new_game)
+TEST_CASE("hidden_map_on_new_game", "[engine_test]")
 {
+    saper::engine e;
     e.new_game(width, length);
     auto map = e.get_current_map();
-    EXPECT_EQ(map.size(), width);
+    REQUIRE(map.size() == width);
     for(auto row : map)
     {
         for(auto el : row) {
-            EXPECT_FALSE(el.is_revealed);
+            REQUIRE(not el.is_revealed);
         }
     }
 }
 
-TEST_F(engine_test, action_reveals_element)
+TEST_CASE("action_reveals_element", "[engine_test]")
 {
+    saper::engine e;
     e.new_game(width, length);
     std::uint8_t x=1, y=2;
     e.action(x,y);
     auto map = e.get_current_map();
-    EXPECT_TRUE(map[x][y].is_revealed);
+    REQUIRE(map[x][y].is_revealed);
 }
 
-TEST_F(engine_test, action_throws_on_range_violation)
+TEST_CASE("action_throws_on_range_violation", "[engine_test]")
 {
+    saper::engine e;
     e.new_game(width, length);
     std::uint8_t max_x=width-1, max_y=length-1;
-    EXPECT_NO_THROW(e.action(max_x,max_y));
-    EXPECT_THROW(e.action(max_x+1,max_y), std::out_of_range);
-    EXPECT_THROW(e.action(max_x,max_y+1), std::out_of_range);
-    EXPECT_THROW(e.action(max_x+10,max_y+1), std::out_of_range);
+    REQUIRE_NOTHROW(e.action(max_x,max_y));
+    REQUIRE_THROWS_AS(e.action(max_x+1,max_y), std::out_of_range);
+    REQUIRE_THROWS_AS(e.action(max_x,max_y+1), std::out_of_range);
+    REQUIRE_THROWS_AS(e.action(max_x+10,max_y+1), std::out_of_range);
 }
 
 //TODO: action without game started, action on forbidden position

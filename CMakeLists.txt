@@ -12,5 +12,8 @@ add_library(saperengine STATIC ${LIB_SRC})
 add_executable(saper ${CLI_SRC})
 target_link_libraries(saper saperengine)
 
-add_executable(ut ${TEST_SRC})
-target_link_libraries(ut saperengine gtest gtest_main pthread)
+add_executable(ut ${TEST_SRC} ${LIB_SRC})
+target_include_directories(ut PRIVATE
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/external>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/src>
+)
