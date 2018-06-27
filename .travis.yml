@@ -19,6 +19,7 @@ matrix:
           packages:
             - clang-4.0
             - libc++-dev
+            - libc++abi-dev
           sources:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-trusty-4.0
