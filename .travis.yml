@@ -10,7 +10,6 @@ matrix:
           packages:
             - g++-6
             - gcc-6
-            - libgtest-dev
           sources:
             - ubuntu-toolchain-r-test
       env: "CXX=g++-6 CC=gcc-6"
@@ -19,19 +18,10 @@ matrix:
         apt:
           packages:
             - clang-4.0
-            - libgtest-dev
           sources:
             - ubuntu-toolchain-r-test
             - llvm-toolchain-trusty-4.0
       env: "CXX=clang++-4.0 CC=clang-4.0"
-
-#build gtest
-before_install:
-  - mkdir /tmp/gtest_build && pushd /tmp/gtest_build
-  - cmake /usr/src/gtest/ -DBUILD_SHARED_LIBS=ON
-  - make
-  - sudo cp -a libgtest_main.so libgtest.so /usr/lib/
-  - popd
 
 script:
   - "mkdir build && cd build"
