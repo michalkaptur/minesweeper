@@ -17,6 +17,7 @@ matrix:
       addons:
         apt:
           packages:
+            - g++-6 # stl headers
             - clang-4.0
           sources:
             - ubuntu-toolchain-r-test
