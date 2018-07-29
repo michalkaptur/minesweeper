@@ -2,7 +2,7 @@
 #include <exception>
 #include <memory>
 
-namespace saper {
+namespace minesweeper {
 
 void engine::new_game(engine::size_t width, engine::size_t height) {
 	this->width = width;

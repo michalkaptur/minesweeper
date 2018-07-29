@@ -7,7 +7,7 @@
 
 #include "map_element.h"
 
-namespace saper {
+namespace minesweeper {
 
 class engine {
 public:

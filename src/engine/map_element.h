@@ -1,6 +1,6 @@
 #pragma once
 
-namespace saper {
+namespace minesweeper {
 
 struct map_element {
 	bool has_bomb = false;

@@ -12,7 +12,7 @@
 mkdir build
 cd build
 cmake ..
-make saper
+make minesweeper
 ```
 
 ## running tests

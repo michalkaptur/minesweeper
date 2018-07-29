@@ -8,12 +8,12 @@ const std::uint8_t length = 4;
 }
 
 TEST_CASE("default_new_game", "[engine_test]") {
-	saper::engine e;
+	minesweeper::engine e;
 	e.new_game();
 }
 
 TEST_CASE("new_game_with_specified_size", "[engine_test]") {
-	saper::engine e;
+	minesweeper::engine e;
 	e.new_game(width, length);
 	auto map = e.get_current_map();
 	REQUIRE(map.size() == width);
@@ -23,7 +23,7 @@ TEST_CASE("new_game_with_specified_size", "[engine_test]") {
 }
 
 TEST_CASE("hidden_map_on_new_game", "[engine_test]") {
-	saper::engine e;
+	minesweeper::engine e;
 	e.new_game(width, length);
 	auto map = e.get_current_map();
 	REQUIRE(map.size() == width);
@@ -35,7 +35,7 @@ TEST_CASE("hidden_map_on_new_game", "[engine_test]") {
 }
 
 TEST_CASE("action_reveals_element", "[engine_test]") {
-	saper::engine e;
+	minesweeper::engine e;
 	e.new_game(width, length);
 	std::uint8_t x = 1, y = 2;
 	e.action(x, y);
@@ -44,7 +44,7 @@ TEST_CASE("action_reveals_element", "[engine_test]") {
 }
 
 TEST_CASE("action_throws_on_range_violation", "[engine_test]") {
-	saper::engine e;
+	minesweeper::engine e;
 	e.new_game(width, length);
 	std::uint8_t max_x = width - 1, max_y = length - 1;
 	REQUIRE_NOTHROW(e.action(max_x, max_y));

@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-void draw_map(const saper::engine::map_t& map) {
+void draw_map(const minesweeper::engine::map_t& map) {
 	for (auto row : map) {
 		for (auto el : row) {
 			char symbol{'O'};
@@ -15,7 +15,7 @@ void draw_map(const saper::engine::map_t& map) {
 }
 
 int main() {
-	saper::engine eng;
+	minesweeper::engine eng;
 	eng.new_game(5, 5);
 	eng.action(1, 2);
 	draw_map(eng.get_current_map());

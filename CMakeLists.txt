@@ -1,4 +1,4 @@
-project(saper)
+project(minesweeper)
 cmake_minimum_required(VERSION 3.1)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14") #CXX_STANDARD variable does not work with clang
@@ -12,10 +12,10 @@ file(GLOB_RECURSE CLI_SRC  ${CMAKE_SOURCE_DIR}/src/cli/*.cpp ${CMAKE_SOURCE_DIR}
 file(GLOB_RECURSE LIB_SRC  ${CMAKE_SOURCE_DIR}/src/engine/*.cpp ${CMAKE_SOURCE_DIR}/src/engine/*.h)
 file(GLOB_RECURSE TEST_SRC ${CMAKE_SOURCE_DIR}/test/*.cpp ${CMAKE_SOURCE_DIR}/test/*.h)
 include_directories(${CMAKE_SOURCE_DIR}/src/)
-add_library(saperengine STATIC ${LIB_SRC})
+add_library(minesweeperengine STATIC ${LIB_SRC})
 
-add_executable(saper ${CLI_SRC})
-target_link_libraries(saper saperengine)
+add_executable(minesweeper ${CLI_SRC})
+target_link_libraries(minesweeper minesweeperengine)
 
 add_executable(ut ${TEST_SRC} ${LIB_SRC})
 target_include_directories(ut PRIVATE
