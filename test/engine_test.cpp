@@ -20,14 +20,13 @@ TEST_CASE("new_game_with_specified_size", "[engine_test]") {
 	REQUIRE(map.get_height() == length);
 }
 
-
 TEST_CASE("action_reveals_element", "[engine_test]") {
 	minesweeper::engine e;
 	e.new_game(width, length);
 	constexpr auto x = 1, y = 2;
 	e.action(x, y);
 	auto map = e.get_current_map();
-	REQUIRE(map.get_internal_map()[x][y].is_revealed);
+	REQUIRE(map.get_map()[x][y].is_revealed);
 }
 
 TEST_CASE("action_throws_on_range_violation", "[engine_test]") {

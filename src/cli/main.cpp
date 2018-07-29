@@ -4,7 +4,7 @@
 #include <iostream>
 
 void draw_map(const minesweeper::map& m) {
-    auto internal_map = m.get_internal_map();
+	const auto& internal_map = m.get_map(minesweeper::map::dimension::rows);
 	for (const auto& row : internal_map) {
 		for (const auto& el : row) {
 			auto symbol = el.is_revealed ? '0' : 'O';
