@@ -1,29 +1,21 @@
 #include "engine.h"
 #include <exception>
-#include <memory>
 
 namespace minesweeper {
 
-void engine::new_game(engine::size_t width, engine::size_t height) {
-	this->width = width;
-	this->height = height;
-	reset_map(width, height);
+void engine::new_game(map::size_type width, map::size_type height) {
+	map_.reset(new map(width, height));
 }
 
-void engine::reset_map(engine::size_t width, engine::size_t height) {
-	map = std::make_unique<engine::map_t>(engine::map_t(
-	    width, std::vector<map_element>(height, map_element())));
-}
-
-void engine::action(size_t x, size_t y) {
-	if (x >= width or y >= height) {
+void engine::action(map::size_type x, map::size_type y) {
+	if (x >= map_->get_width() or y >= map_->get_height()) {
 		throw std::out_of_range(
 		    "Called action on coordinates out of range");
 	}
-	(*map)[x][y].is_revealed = true;
+    map_->set_revealed(x, y);
 }
 
-engine::map_t& engine::get_current_map() {
-	return *map;
+const map& engine::get_current_map() const {
+	return *map_;
 }
 }

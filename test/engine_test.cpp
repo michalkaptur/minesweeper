@@ -16,31 +16,18 @@ TEST_CASE("new_game_with_specified_size", "[engine_test]") {
 	minesweeper::engine e;
 	e.new_game(width, length);
 	auto map = e.get_current_map();
-	REQUIRE(map.size() == width);
-	for (auto row : map) {
-		REQUIRE(row.size() == length);
-	}
+	REQUIRE(map.get_width() == width);
+	REQUIRE(map.get_height() == length);
 }
 
-TEST_CASE("hidden_map_on_new_game", "[engine_test]") {
-	minesweeper::engine e;
-	e.new_game(width, length);
-	auto map = e.get_current_map();
-	REQUIRE(map.size() == width);
-	for (auto row : map) {
-		for (auto el : row) {
-			REQUIRE(not el.is_revealed);
-		}
-	}
-}
 
 TEST_CASE("action_reveals_element", "[engine_test]") {
 	minesweeper::engine e;
 	e.new_game(width, length);
-	std::uint8_t x = 1, y = 2;
+	constexpr auto x = 1, y = 2;
 	e.action(x, y);
 	auto map = e.get_current_map();
-	REQUIRE(map[x][y].is_revealed);
+	REQUIRE(map.get_internal_map()[x][y].is_revealed);
 }
 
 TEST_CASE("action_throws_on_range_violation", "[engine_test]") {
