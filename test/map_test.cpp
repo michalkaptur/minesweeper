@@ -14,7 +14,7 @@ TEST_CASE("proper_width_and_height", "map_test") {
 
 TEST_CASE("hidden_map_by_default", "map_test") {
 	minesweeper::map mymap(width, height);
-	const auto& internal_map = mymap.get_map();
+	const auto& internal_map = mymap.get_vectors();
 	for (const auto& row : internal_map) {
 		for (const auto& el : row) {
 			REQUIRE(not el.is_revealed);
@@ -26,11 +26,12 @@ TEST_CASE("reveal_proper_map_element", "map_test") {
 	constexpr auto x = 2, y = 3;
 	minesweeper::map mymap(width, height);
 	mymap.set_revealed(x, y);
-	REQUIRE(mymap.get_map().at(x).at(y).is_revealed);
+	REQUIRE(mymap.get_vectors().at(x).at(y).is_revealed);
 }
 TEST_CASE("valid_dimension_when_inverted_by_rows", "map_test") {
 	minesweeper::map mymap(width, height);
-	const auto& inverted = mymap.get_map(minesweeper::map::dimension::rows);
+	const auto& inverted =
+	    mymap.get_vectors(minesweeper::map::dimension::rows);
 	REQUIRE(inverted.size() == height);
 	REQUIRE(inverted.at(0).size() == width);
 }
@@ -38,9 +39,9 @@ TEST_CASE("same_elements_when_inverted_by_rows", "map_test") {
 	minesweeper::map mymap(2, 3);
 	mymap.set_revealed(1, 2);  // F
 	const auto& map_by_rows =
-	    mymap.get_map(minesweeper::map::dimension::rows);
+	    mymap.get_vectors(minesweeper::map::dimension::rows);
 	const auto& map_by_columns =
-	    mymap.get_map(minesweeper::map::dimension::columns);
+	    mymap.get_vectors(minesweeper::map::dimension::columns);
 	/*
 	 by columns          by rows
 	 A B                 A C E

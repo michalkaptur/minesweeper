@@ -15,7 +15,7 @@ map::size_type map::get_width() const {
 	internal_map.size();
 }
 
-map::map_type map::get_map(map::dimension indexed_by) const {
+map::map_type map::get_vectors(map::dimension indexed_by) const {
 	if (indexed_by == dimension::columns) {
 		return internal_map;
 	}

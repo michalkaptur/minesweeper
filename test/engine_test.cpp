@@ -26,7 +26,7 @@ TEST_CASE("action_reveals_element", "[engine_test]") {
 	constexpr auto x = 1, y = 2;
 	e.action(x, y);
 	auto map = e.get_current_map();
-	REQUIRE(map.get_map()[x][y].is_revealed);
+	REQUIRE(map.get_vectors()[x][y].is_revealed);
 }
 
 TEST_CASE("action_throws_on_range_violation", "[engine_test]") {

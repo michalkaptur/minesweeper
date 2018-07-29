@@ -17,7 +17,7 @@ public:
 	void set_revealed(size_type x, size_type y);
 
 	// TODO: replace with iterator iface, instead of copy/create
-	map_type get_map(dimension indexed_by = dimension::columns) const;
+	map_type get_vectors(dimension indexed_by = dimension::columns) const;
 
 private:
 	map_type internal_map;
