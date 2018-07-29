@@ -8,11 +8,11 @@ map::map(size_type width, size_type height)
           map_type(width, std::vector<map_element>(height, map_element()))) {}
 
 map::size_type map::get_height() const {
-	internal_map.at(0).size();
+	return internal_map.at(0).size();
 }
 
 map::size_type map::get_width() const {
-	internal_map.size();
+	return internal_map.size();
 }
 
 map::map_type map::get_vectors(map::dimension indexed_by) const {
