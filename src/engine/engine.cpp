@@ -4,7 +4,7 @@
 namespace minesweeper {
 
 void engine::new_game(map::size_type width, map::size_type height) {
-	map_.reset(new map(width, height));
+	map_ = std::make_unique<map>(width, height);
 }
 
 void engine::action(map::size_type x, map::size_type y) {
