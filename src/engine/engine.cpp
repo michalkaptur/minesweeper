@@ -12,7 +12,7 @@ void engine::action(map::size_type x, map::size_type y) {
 		throw std::out_of_range(
 		    "Called action on coordinates out of range");
 	}
-    map_->set_revealed(x, y);
+	map_->set_revealed(x, y);
 }
 
 const map& engine::get_current_map() const {
