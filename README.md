@@ -3,7 +3,6 @@
 # minesweeper engine
 
 ## dependencies
-  - gtest
   - compiler with c++14 support
   - clang-format
 
