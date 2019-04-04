@@ -16,11 +16,11 @@ map::size_type map::get_width() const {
 }
 
 map::map_type map::get_vectors(map::dimension indexed_by) const {
-	if (indexed_by == dimension::columns) {
-		return internal_map;
-	}
-	if (indexed_by == dimension::rows) {
-		return invert();
+	switch (indexed_by) {
+		case dimension::columns:
+			return internal_map;
+		case dimension::rows:
+			return invert();
 	}
 	throw std::runtime_error("not implemented");
 }
