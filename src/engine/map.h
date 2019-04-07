@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <cstdint>
+#include <vector>
 #include "map_element.h"
 
 namespace minesweeper {
@@ -15,6 +15,7 @@ public:
 	size_type get_height() const;
 	size_type get_width() const;
 	void set_revealed(size_type x, size_type y);
+	void put_bomb(size_type x, size_type y);
 
 	// TODO: replace with iterator iface, instead of copy/create
 	map_type get_vectors(dimension indexed_by = dimension::columns) const;
@@ -24,4 +25,4 @@ private:
 
 	map_type invert() const;
 };
-}
+}  // namespace minesweeper

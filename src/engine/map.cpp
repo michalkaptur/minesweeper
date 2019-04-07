@@ -26,7 +26,12 @@ map::map_type map::get_vectors(map::dimension indexed_by) const {
 }
 
 void map::set_revealed(map::size_type x, map::size_type y) {
-	internal_map.at(x).at(y).is_revealed = true;
+    internal_map.at(x).at(y).is_revealed = true;
+}
+
+void map::put_bomb(map::size_type x, map::size_type y)
+{
+    internal_map.at(x).at(y).has_bomb = true;
 }
 
 map::map_type map::invert() const {

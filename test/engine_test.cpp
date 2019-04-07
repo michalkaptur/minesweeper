@@ -2,10 +2,8 @@
 #include <catch.hpp>
 #include <cstdint>
 
-namespace {
-const std::uint8_t width = 2;
-const std::uint8_t length = 4;
-}
+constexpr std::uint8_t width = 2;
+constexpr std::uint8_t length = 4;
 
 TEST_CASE("default_new_game", "[engine_test]") {
 	minesweeper::engine e;
@@ -37,6 +35,26 @@ TEST_CASE("action_throws_on_range_violation", "[engine_test]") {
 	REQUIRE_THROWS_AS(e.action(max_x + 1, max_y), std::out_of_range);
 	REQUIRE_THROWS_AS(e.action(max_x, max_y + 1), std::out_of_range);
 	REQUIRE_THROWS_AS(e.action(max_x + 10, max_y + 1), std::out_of_range);
+}
+
+TEST_CASE("new_game_with_no_bombs_policy", "[engine_test]") {
+	minesweeper::engine e;
+	e.new_game(2, 2);
+	const auto& map = e.get_current_map().get_vectors();
+	REQUIRE(map[0][0].has_bomb == false);
+	REQUIRE(map[0][1].has_bomb == false);
+	REQUIRE(map[1][0].has_bomb == false);
+	REQUIRE(map[1][1].has_bomb == false);
+}
+
+TEST_CASE("new_game_with_all_bombs_policy", "[engine_test]") {
+	minesweeper::engine e;
+	e.new_game(2, 2, minesweeper::engine::bomb_policy::all);
+	const auto& map = e.get_current_map().get_vectors();
+	REQUIRE(map[0][0].has_bomb);
+	REQUIRE(map[0][1].has_bomb);
+	REQUIRE(map[1][0].has_bomb);
+	REQUIRE(map[1][1].has_bomb);
 }
 
 // TODO: action without game started, action on forbidden position
