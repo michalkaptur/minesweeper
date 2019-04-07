@@ -15,9 +15,16 @@ void draw_map(const minesweeper::map& m) {
 	}
 }
 
+void print_separator() {
+	std::cout << '\n';
+}
+
 int main() {
 	minesweeper::engine eng;
 	eng.new_game(5, 4);
 	eng.action(1, 2);
+	draw_map(eng.get_current_map());
+	print_separator();
+	eng.action(1, 1);
 	draw_map(eng.get_current_map());
 }
