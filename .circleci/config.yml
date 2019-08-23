@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu/19.04
+    steps:
+      - checkout
+      - run:
+          name: foo
+          command: echo foo
