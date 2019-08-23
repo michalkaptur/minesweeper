@@ -6,5 +6,5 @@ jobs:
     steps:
       - checkout
       - run:
-          name: foo
-          command: echo foo
+          name: install build tools
+          command: apt-get update && apt-get install -y gcc g++ cmake
