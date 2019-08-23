@@ -14,3 +14,12 @@ jobs:
       - run:
           name: build all
           command: cd build && make
+      - run:
+          name: run application
+          command: ./build/minesweeper
+      - run:
+          name: run unit tests
+          command: ./build/ut
+      - run:
+          name: verify code formatting
+          command: ./tools/is_formatted.sh
