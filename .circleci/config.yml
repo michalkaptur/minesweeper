@@ -40,3 +40,10 @@ jobs:
       - run:
           name: run unit tests
           command: ./build/ut
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-gcc
+      - build-clang
