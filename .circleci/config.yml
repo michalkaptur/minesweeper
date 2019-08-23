@@ -27,7 +27,7 @@ jobs:
       - checkout
       - run:
           name: install build tools
-          command: apt-get update && apt-get install -y clang cmake
+          command: apt-get update && apt-get install -y libc++-dev libc++abi-dev clang cmake
       - run:
           name: generate project
           command: CXX=clang++-4.0 CC=clang-4.0 mkdir build && cd build && cmake ..
@@ -47,3 +47,4 @@ workflows:
     jobs:
       - build-gcc
       - build-clang
+
