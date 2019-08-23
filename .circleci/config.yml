@@ -8,3 +8,9 @@ jobs:
       - run:
           name: install build tools
           command: apt-get update && apt-get install -y gcc g++ cmake
+      - run:
+          name: generate project
+          command: mkdir build && cd build && cmake ..
+      - run:
+          name: build all
+          command: make
