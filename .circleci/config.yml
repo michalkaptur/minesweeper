@@ -1,0 +1,50 @@
+version: 2
+jobs:
+  build-gcc:
+    docker:
+      - image: "ubuntu:19.04"
+    steps:
+      - checkout
+      - run:
+          name: install build tools
+          command: apt-get update && apt-get install -y gcc g++ cmake
+      - run:
+          name: generate project
+          command: mkdir build && cd build && cmake ..
+      - run:
+          name: build all
+          command: cd build && make
+      - run:
+          name: run application
+          command: ./build/minesweeper
+      - run:
+          name: run unit tests
+          command: ./build/ut
+  build-clang:
+    docker:
+      - image: "ubuntu:19.04"
+    steps:
+      - checkout
+      - run:
+          name: install build tools
+          command: apt-get update && apt-get install -y libc++-dev libc++abi-dev clang cmake
+      - run:
+          name: generate project
+          command: CXX=clang++-4.0 CC=clang-4.0 mkdir build && cd build && cmake ..
+      - run:
+          name: build all
+          command: cd build && make
+      - run:
+          name: run application
+          command: ./build/minesweeper
+      - run:
+          name: run unit tests
+          command: ./build/ut
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-gcc
+      - build-clang
+
