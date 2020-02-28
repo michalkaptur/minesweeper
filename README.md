@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/michalkaptur/minesweeper.svg?branch=master)](https://travis-ci.org/michalkaptur/minesweeper)
+[![CircleCI](https://circleci.com/gh/michalkaptur/minesweeper.svg?style=shield)](https://github.com/michalkaptur/minesweeper)
 
 # minesweeper engine
 
